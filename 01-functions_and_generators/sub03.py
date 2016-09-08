@@ -7,7 +7,7 @@ def planify(sequense):
         element_type = type(element)
         if (element_type == list or element_type == tuple or
             element_type == MyList):
-            result += plantify(element)
+            result += planify(element)
         else:
             result.append(element)
 
@@ -19,4 +19,4 @@ class MyList(list):
 
 seq = ('abc', 3, [8, ('x', 'y'), MyList(xrange(5)), [100, [99, [98, [97]]]]])
 
-print plantify(seq)
+print planify(seq)
