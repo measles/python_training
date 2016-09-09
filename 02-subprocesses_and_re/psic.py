@@ -30,7 +30,7 @@ def parse_config():
     for i in infile.readlines():
         i = i.strip()
         if re_host.match(i):
-            if host != {}:
+            if host != {} and host["host"] != "*":
                 results.append(host)
                 host = {}
 
