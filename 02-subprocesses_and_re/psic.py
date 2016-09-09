@@ -19,11 +19,11 @@ def parse_config():
 
     # Defining RE which will be used duting parsing
     re_host = re.compile('Host[ \t]+.+', re.DOTALL)
-    re_comment = re.compile('#')
     re_hostname = re.compile('HostName', re.IGNORECASE)
     re_username = re.compile('User', re.IGNORECASE)
     re_port = re.compile('Port', re.IGNORECASE)
-    re_identity = re.compile('IdentityFile', re.IGNORECASE)
+    re_idfile = re.compile('IdentityFile', re.IGNORECASE)
+    re_comment = re.compile('#')
     re_empty = re.compile('^[ \t]*$')
 
     host = {}
@@ -40,15 +40,14 @@ def parse_config():
             host["hostname"] = i.split()[1]
         elif re_username.match(i):
             host["username"] = i.split()[1]
+        elif re_idfile.match(i):
+            pass
+#            host["idfile"] = i.split()[1]
         elif re_port.match(i):
             host["port"] = i.split()[1]
-        elif re_identity.match(i):
-            host["identity"] = i.split()[1]
         elif re_comment.match(i) or re_empty.match(i):
             continue
 
     return results
         
 print parse_config()
-
-
