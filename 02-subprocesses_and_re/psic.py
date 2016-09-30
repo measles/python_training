@@ -5,9 +5,10 @@ import re
 import curses
 
 #
-# Assuming that .ssh/config is correct, there is no duplicating hosts or 
+# Assuming that .ssh/config is correct, there is no duplicating hosts or
 # host information fields
 #
+
 
 def parse_config():
 
@@ -52,6 +53,7 @@ def parse_config():
 
     return results
 
+
 def start_ncurses():
     # Initialize screen
     stdscr = curses.initscr()
@@ -63,48 +65,48 @@ def start_ncurses():
     stdscr.keypad(1)
     # Hide a cursor
     curses.curs_set(0)
-    #Enable colors (or, at least, try to)
+    # Enable colors (or, at least, try to)
     curses.start_color()
-    curses.init_pair(1,curses.COLOR_BLUE,curses.COLOR_GREEN)
-    curses.init_pair(2,curses.COLOR_WHITE,curses.COLOR_BLUE)
+    curses.init_pair(1, curses.COLOR_BLUE, curses.COLOR_GREEN)
+    curses.init_pair(2, curses.COLOR_WHITE, curses.COLOR_BLUE)
 
-    stdscr.bkgd(' ',curses.color_pair(1))
-    
+    stdscr.bkgd(' ', curses.color_pair(1))
+
     y, x = stdscr.getmaxyx()
-    init_main_window(y,x, stdscr)
-    content = init_list_frame(y,x)
+    init_main_window(y, x, stdscr)
+    content = init_list_frame(y, x)
 
     return stdscr, content
-   
-def init_main_window(y,x,stdscr):
+
+
+def init_main_window(y, x, stdscr):
     stdscr.addstr(0, 0, "PythonSshInteractiveClient")
-    stdscr.addstr(y-1,0, "k,UpArrow: Up; j,DownArrow: Down; o,Enter: Open connection; q: exit")
+    stdscr.addstr(y-1, 0, "k,UpArrow: Up; j,DownArrow: Down; o,Enter: Open connection; q: exit")
     stdscr.refresh()
 
-def init_list_frame(y,x):
+
+def init_list_frame(y, x):
     content = curses.newwin(y-2, x, 1, 0)
-    content.bkgd(' ',curses.color_pair(2))
+    content.bkgd(' ', curses.color_pair(2))
 
-    content.addch(0,0, curses.ACS_ULCORNER)
-    content.addch(0,x-1, curses.ACS_URCORNER)
-    content.addch(y-3,0, curses.ACS_LLCORNER)
-    content.addch(y-3,x-2, curses.ACS_LRCORNER)
-
+    content.addch(0, 0, curses.ACS_ULCORNER)
+    content.addch(0, x-1, curses.ACS_URCORNER)
+    content.addch(y-3, 0, curses.ACS_LLCORNER)
+    content.addch(y-3, x-2, curses.ACS_LRCORNER)
 
     content.refresh()
     return content
 
 
-
 def quit_ncurses():
-    # Deactivate curses-specific screen settings 
+    # Deactivate curses-specific screen settings
     curses.echo()
     curses.nocbreak()
     stdscr.keypad(0)
     curses.curs_set(1)
     # Get back to usual terminal
     curses.endwin()
-        
+
 config = parse_config()
 
 stdscr, content = start_ncurses()

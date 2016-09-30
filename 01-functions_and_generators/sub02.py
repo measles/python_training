@@ -4,6 +4,7 @@ import urllib2
 import json
 import itertools
 
+
 def reddit(keyword):
     def get_list_from_reddit():
         url = "https://www.reddit.com/r/" + keyword + ".json"
@@ -15,6 +16,7 @@ def reddit(keyword):
             yield key["data"]["title"]
 
     return get_list_from_reddit
+
 
 def print_slice(sequense, number):
     titles = itertools.islice(sequense, number)
@@ -29,5 +31,5 @@ for title in clisp():
 for title in erlang():
     print repr(title)
 
-#print_slice(clisp(), 3)
-#print_slice(erlang(), 5)
+# print_slice(clisp(), 3)
+# print_slice(erlang(), 5)

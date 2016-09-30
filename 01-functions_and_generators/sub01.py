@@ -2,6 +2,7 @@
 
 import functools
 
+
 def add_factory_1(a):
     def magic_add(b):
         return a+b
@@ -11,9 +12,10 @@ def add_factory_1(a):
 add5_1 = add_factory_1(5)
 print add5_1(10)
 
+
 def add_factory_2(a):
     def magic_sum(b):
-        return sum([a,b])
+        return sum([a, b])
 
     return magic_sum
 
