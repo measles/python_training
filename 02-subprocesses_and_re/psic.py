@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
-import os, re, curses
+import os
+import re
+import curses
 
 #
 # Assuming that .ssh/config is correct, there is no duplicating hosts or 

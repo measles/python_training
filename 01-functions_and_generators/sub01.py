@@ -1,6 +1,6 @@
 #!/usr/bin/python2
 
-import functoiols
+import functools
 
 def add_factory_1(a):
     def magic_add(b):

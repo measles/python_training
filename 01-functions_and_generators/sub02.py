@@ -1,6 +1,8 @@
 #!/usr/bin/python2
 
-import urllib2, json, itertools
+import urllib2
+import json
+import itertools
 
 def reddit(keyword):
     def get_list_from_reddit():
