@@ -2,9 +2,14 @@
 
 
 def is_list(element):
-    element_type = type(element)
-    if (element_type == list or element_type == tuple or
-            element_type == MyList):
+    if isinstance(element, (list, tuple, MyList)):
+        return True
+    else:
+        return False
+
+
+def is_list_2(element):
+    if issubclass(element.__class__, (list, tuple)):
         return True
     else:
         return False
@@ -24,7 +29,7 @@ def planify(sequense):
 
 def planify2(sequense):
     for element in sequense:
-        if is_list(element):
+        if is_list_2(element):
             for sub_element in planify2(element):
                 yield sub_element
         else:
