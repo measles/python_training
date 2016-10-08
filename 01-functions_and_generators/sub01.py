@@ -16,7 +16,7 @@ print add5_1(10)
 
 def add_factory_1_2(addend_a):
     def magic_sum(addend_b):
-        return sum([addend_a, addend_b])
+        return sum((addend_a, addend_b))
 
     return magic_sum
 
